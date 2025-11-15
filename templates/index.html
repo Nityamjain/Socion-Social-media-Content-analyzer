@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Socion</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=upload_file" />
+</head>
+  <!-- Modal for progress -->
+<!-- Modal (already in your HTML) -->
+<div id="analysis-modal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <h3>Analyzing <span id="modal-filename"></span>...</h3>
+    <div class="progress-bar-outer">
+      <div class="progress-bar-inner" id="progress-bar-inner"></div>
+    </div>
+    <p id="process-step">Uploading file...</p>
+  </div>
+</div>
+
+  <!-- Header -->
+  <header class="header-bar">
+    <div class="header-inner container">
+      <div class="logo-and-title">
+        <span class="brand-dot"></span>
+        <span class="brand-text">Socion</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#" class="nav-link">Features</a>
+        <a href="#" class="nav-link">How It Works</a>
+        <a href="#" class="nav-link">Value Proposition</a>
+      </nav>
+      <a href="#" class="cta-button">Join Waiting-List</a>
+    </div>
+  </header>
+
+ <main class="main-content container">
+  <section class="hero-grid">
+    <!-- Main Text (Left) -->
+    <div class="main-text">
+      <h2 class="main-headline">
+        Analyze your posts.<br>
+        Get your metrics.<br>
+        Grow your social presence.
+      </h2>
+      <p class="sub-headline">
+        Instantly extract metrics and insights from your social media posts — images or documents.<br>
+        Upload your content to see readability, sentiment, hashtags, keywords, and more.<br>
+        <span class="emphasis">Become a smarter creator, influencer, or brand!</span>
+      </p>
+    </div>
+
+
+    <!-- File Uploader (Center Top) -->
+ <div class="hero-uploader">
+  <form id="uploadForm"  enctype="multipart/form-data">
+
+    <!-- This div needs the ID = drop-area -->
+    <label class="custom-uploader" id="drop-area">
+      <div class="uploader-bg">
+
+        <!-- Upload icon -->
+        <span class="upload-icon">
+          <span class="material-symbols-outlined">upload_file</span>
+        </span>
+
+        <!-- Actual file name text -->
+        <span id="selected-file-name" class="selected-file-name">
+          No file selected
+        </span>
+
+        <!-- Image preview -->
+        <img id="file-preview" class="file-preview" style="display: none;" />
+
+        <!-- Label & Hint -->
+        <span class="upload-label">
+          Select or drag & drop image, docx, pdf
+        </span>
+        <span class="upload-hint">Max file size: 10MB</span>
+
+        <!-- The actual input -->
+        <input id="file-upload"
+               type="file"
+               name="file"
+               accept=".jpg,.jpeg,.png,.pdf,.docx,.bmp,.tiff" />
+      </div>
+    </label>
+
+    <!-- Button -->
+    <button id ="analyzeBtn" class="cta-upload-btn">Analyze Now</button>
+
+
+  </form>
+
+  <div id="upload-status"></div>
+</div>
+
+
+    <!-- Illustration 2 (Right Card) -->
+    <div class="hero-static-right">
+      <div class="static-info-box">
+        
+        <div class="info-box-text">
+          <strong>Trending Hashtags</strong><br>
+          <span>#growth #insights #brand</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+ 
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Socion. All rights reserved. | 
+        <a href="#" class="footer-link">Privacy Policy</a> | 
+        <a href="#" class="footer-link">Terms of Service</a>
+      </p>
+    </div>
+  </footer>
+
+  <pre id="output-box"></pre>
+ <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

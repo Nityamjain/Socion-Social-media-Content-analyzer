@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - Socion</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=content_copy,sentiment_satisfied,smart_toy" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header-bar">
+    <div class="header-inner">
+      <h1>Socion Analytics</h1>
+      <a href="/" class="back-btn">← Back Home</a>
+    </div>
+  </header>
+
+  <!-- Main Dashboard -->
+  <main class="dashboard-wrapper">
+    
+    <!-- LEFT COLUMN -->
+    <div class="left-column">
+      <div class="post-image-box">
+        <img id="post-preview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%23f0f0f0' width='200' height='200'/%3E%3Ctext x='100' y='100' text-anchor='middle' dy='.3em' fill='%23999' font-size='14'%3ENo Image%3C/text%3E%3C/svg%3E" alt="Post" />
+      </div>
+      <div class="coherence-box">
+        <h3>Coherence Score</h3>
+        <p id="coherence-val" class="coherence-value">0.0</p>
+      </div>
+    </div>
+
+    <!-- CENTER COLUMN -->
+    <div class="center-column">
+      
+      <!-- Row 1: Sentiment + AI -->
+      <div class="chart-row">
+        <div class="chart-card sentiment-card">
+          <div class="chart-header">
+            <span class="material-symbols-outlined">sentiment_satisfied</span>
+            <h3>Sentiment</h3>
+          </div>
+          <div class="circle-chart">
+            <svg viewBox="0 0 140 140">
+              <defs>
+                <linearGradient id="sentimentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#2ecc71;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#27ae60;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <circle cx="70" cy="70" r="60" class="bg-circle" />
+              <circle cx="70" cy="70" r="60" class="progress-circle" id="sentiment-progress" />
+              <text x="70" y="75" class="chart-text" id="sentiment-percent">0%</text>
+            </svg>
+          </div>
+          <p id="sentiment-label" class="chart-label">Neutral</p>
+        </div>
+
+        <div class="chart-card ai-card">
+          <div class="chart-header">
+            <span class="material-symbols-outlined">smart_toy</span>
+            <h3>AI Detection</h3>
+          </div>
+          <div class="gauge-chart">
+            <svg viewBox="0 0 180 110">
+              <defs>
+                <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#c0392b;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <path class="gauge-bg" d="M 20 100 A 70 70 0 0 1 160 100" />
+              <path class="gauge-fill" d="M 20 100 A 70 70 0 0 1 160 100" id="ai-gauge" />
+              <text x="90" y="38" class="gauge-text" id="ai-percent">0%</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Emotion Detection -->
+      <div class="emotion-box">
+        <h3>Emotion Detection</h3>
+        <div id="emotion-chart" class="emotion-bars"></div>
+      </div>
+
+      <!-- Row 3: Hashtags (moved from right column) -->
+      <div class="hashtag-box">
+        <div class="hashtag-header">
+          <h3>Hashtag Suggestions</h3>
+          <button id="copy-all-btn" class="copy-btn" title="Copy all">
+            <span class="material-symbols-outlined">content_copy</span>
+          </button>
+        </div>
+        <div id="hashtags-container" class="hashtags-list"></div>
+        <p id="copy-status" class="copy-status"></p>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="right-column">
+      
+      <div class="category-box">
+        <h3>Category</h3>
+        <p id="category-val" class="category-value">--</p>
+      </div>
+
+      <!-- Readability (moved from center column) -->
+      <div class="readability-box">
+        <h3>Readability</h3>
+        <div id="readability-val" class="readability-content">Loading...</div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Socion</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
